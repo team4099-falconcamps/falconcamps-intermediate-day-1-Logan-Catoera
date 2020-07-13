@@ -2,6 +2,7 @@ package com.team4099.falconcamps.subsystems;
 
 import com.revrobotics.*;
 
+import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.PIDSubsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -12,13 +13,13 @@ public class ShooterSparkPID extends PIDSubsystem {
     private final CANPIDController pidController = shooterFollower.getPIDController();
 
     public ShooterSparkPID() {
-        double ShooterP = 1.7 / 300;
-        double ShooterI = 0.0;
-        double ShooterD = 5.5 * 14000;
-        super(new PIDController(ShooterP, ShooterI, ShooterD));
+        super(new PIDController(1.7 / 300, 0.0, 5.5 * 14000));
+    }
+    public double getCurrentVelocity() {
+        return shooterEncoder.getVelocity();
     }
     
-    public double useMeasurement() {
+    public double getMeasurement() {
         return getCurrentVelocity();
     }
     
