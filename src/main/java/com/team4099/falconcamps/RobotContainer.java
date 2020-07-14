@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 public class RobotContainer {
     private final ShooterSparkPID subsystem = new ShooterSparkPID();
+    private final ShooterPIDSubsystem subsystem = new ShooterPIDSubsystem();
     XboxController driverController = new XboxController(0);
 
     public RobotContainer() {

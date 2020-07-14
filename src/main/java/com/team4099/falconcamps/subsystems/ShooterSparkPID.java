@@ -19,26 +19,18 @@ public class ShooterSparkPID extends PIDSubsystem {
         pidController.setP(1.7 / 300);
         pidController.setI(0.0);
         pidController.setD(5,5 * 14000);
-        shooterFollower.follow(shooterLeader);
+        shooterFollower.follow(shooterLeader, true);
     }
     public double getCurrentVelocity() {
         return shooterEncoder.getVelocity();
     }
     
-    public double getMeasurement() {
-        return getCurrentVelocity();
-    }
-    
-    public void useOutput(double setPoint,double output) {
-        shooterLeader.set(output);
-    }
     public void setTargetVelocity(double setPoint) {
     TargetVelocity = setPoint;
     }
     
     @Override
     public void periodic() {
-        
         pidController.setReference(TargetVelocity, ControlType.kVelocity);
     }
 }
