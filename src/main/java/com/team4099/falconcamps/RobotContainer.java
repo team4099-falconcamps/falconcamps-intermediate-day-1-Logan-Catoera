@@ -1,6 +1,8 @@
 package com.team4099.falconcamps;
 
+import com.team4099.falconcamps.commands.shooter.ShootPIDSubsystemCommand;
 import com.team4099.falconcamps.commands.shooter.ShootSparkPIDCommand;
+import com.team4099.falconcamps.commands.shooter.ShooterPIDSubsystemIdleCommand;
 import com.team4099.falconcamps.commands.shooter.ShooterSparkPIDIdleCommand;
 import com.team4099.falconcamps.subsystems.ShooterPIDSubsystem;
 import com.team4099.falconcamps.subsystems.ShooterSparkPID;
@@ -14,7 +16,7 @@ public class RobotContainer {
     XboxController driverController = new XboxController(0);
 
     public RobotContainer() {
-        new Trigger(driverController::getAButton).whileActiveOnce(new ShootSparkPIDCommand(sparkSubsystem));
-        sparkSubsystem.setDefaultCommand(new ShooterSparkPIDIdleCommand(sparkSubsystem));
+        new Trigger(driverController::getAButton).whileActiveOnce(new ShootPIDSubsystemCommand(subsystem));
+        subsystem.setDefaultCommand(new ShooterPIDSubsystemIdleCommand(subsystem));
     }
 }
