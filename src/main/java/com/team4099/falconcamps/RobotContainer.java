@@ -9,9 +9,12 @@ import com.team4099.falconcamps.subsystems.ShooterSparkPID;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-
-public class RobotContainer {
+import io.github.oblarg.oblog.Loggable;
+import io.github.oblarg.oblog.annotations.Log;
+public class RobotContainer implements Loggable {
+    @Log
     private final ShooterSparkPID sparkSubsystem = new ShooterSparkPID();
+    @Log
     private final ShooterPIDSubsystem subsystem = new ShooterPIDSubsystem();
     XboxController driverController = new XboxController(0);
 
